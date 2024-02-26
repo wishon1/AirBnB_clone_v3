@@ -8,6 +8,8 @@ from api.v1.views import app_views
 from models import storage
 from models.state import State
 from models.city import City
+from models.place import Place
+from models.review import Review
 
 
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
@@ -68,7 +70,7 @@ def delete_city(city_id):
 def create_city(state_id):
     """Creates a new city"""
     # Retrieve the state object with the given state_id from the database
-    target_state = storage.get(State, state_id)
+    target_state = storage.get("State", state_id)
 
     # If state is not found, return 404 error
     if not target_state:
