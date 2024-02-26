@@ -15,7 +15,7 @@ from models.city import City
 def retrieve_cities_by_state(state_id):
     """Retrieves the list of all City objects of a State"""
     # Retrieve the state object with the given state_id from the database
-    target_state = storage.get(State, state_id)
+    target_state = storage.get("State", state_id)
 
     # If state is not found, return 404 error
     if not target_state:
@@ -34,7 +34,7 @@ def retrieve_cities_by_state(state_id):
 def retrieve_city(city_id):
     """Retrieves a City object by ID"""
     # Retrieve the city object with the given city_id from the database
-    target_city = storage.get(City, city_id)
+    target_city = storage.get("City", city_id)
 
     # If city is not found, return 404 error
     if not target_city:
@@ -49,7 +49,7 @@ def retrieve_city(city_id):
 def delete_city(city_id):
     """Deletes a City object by ID"""
     # Retrieve the city object with the given city_id from the database
-    target_city = storage.get(City, city_id)
+    target_city = storage.get("City", city_id)
 
     # If city is not found, return 404 error
     if not target_city:
@@ -103,7 +103,7 @@ def create_city(state_id):
 def update_city(city_id):
     """Updates a City object by ID"""
     # Retrieve the city object with the given city_id from the database
-    target_city = storage.get(City, city_id)
+    target_city = storage.get("City", city_id)
 
     # If city is not found, return 404 error
     if not target_city:
