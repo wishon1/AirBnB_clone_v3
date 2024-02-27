@@ -20,12 +20,12 @@ def all():
 @app_views.route('/states/<state_id>', methods=['GET', 'DELETE'])
 def get(state_id):
     """ Retrieves or deletes a State object """
-    for state in storage.all("State").values():
-        if state.id == state_id:
+    for item in storage.all("State").values():
+        if item.id == state_id:
             if request.method == 'GET':
-                return jsonify(obj.to_dict())
+                return jsonify(item.to_dict())
             if request.method == 'DELETE':
-                storage.delete(state)
+                storage.delete(item)
                 storage.save()
                 return jsonify({}), 200
     abort(404)
