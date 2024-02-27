@@ -70,15 +70,15 @@ class DBStorage:
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session
-    
+
     def get(self, cls, id):
-        '''Returns the object based on the class and its ID, or None
-           if not found
-        '''
-        cls = self.all(cls)
-        for item in cls:
-            if id == str(item.id):
-                return item
+        """Returns the object based on the class
+        and its ID, or None if not found
+        """
+        if cls and id:
+            fetch = "{}.{}".format(cls, id)
+            all_objects = self.all(cls)
+            return all_objects.get(fetch)
         return None
 
     def count(self, cls=None):
