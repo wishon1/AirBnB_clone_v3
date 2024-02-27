@@ -72,14 +72,14 @@ class DBStorage:
         self.__session = Session
 
     def get(self, cls, id):
-        """Returns the object based on the class
-        and its ID, or None if not found
         """
-        if cls and id:
-            all_objects = models.storage.all(cls)
-            for obj in all_objects.values():
-                if obj.id == id:
-                    return object
+        doc string place holder, This function is used to
+        retrieve an object depending on the id passed
+        """
+        all_class = self.all(cls)
+        for obj in all_class.values():
+            if id == str(obj.id):
+                return obj
         return None
 
     def count(self, cls=None):
