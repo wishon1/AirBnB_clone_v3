@@ -76,9 +76,11 @@ class DBStorage:
         and its ID, or None if not found
         """
         if cls and id:
-            fetch = "{}.{}".format(cls, id)
             all_objects = self.all(cls)
-            return all_objects.get(fetch)
+            for key, value in all_objects.items():
+                combination = "{}.{}".format(cls, id)
+                if key == combination:
+                    return value
         return None
 
     def count(self, cls=None):
